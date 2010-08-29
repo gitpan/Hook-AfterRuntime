@@ -1,6 +1,9 @@
 Build.PL
 lib/Hook/AfterRuntime.pm
 MANIFEST			This list of files
-t/acceptance.t
-README
 META.yml
+README
+t/Acceptance1.t
+t/Acceptance2.t
+t/TestA.pm
+t/TestB.pm

@@ -1,10 +1,8 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
-
 use Test::More;
-
-our $TRIGGERED = 0;
+use vars qw/$TRIGGERED/;
 
 BEGIN {
     package Test::A;
@@ -12,12 +10,16 @@ BEGIN {
     use warnings;
     use Hook::AfterRuntime;
 
-    sub import { after_runtime { $main::TRIGGERED++ }}
+    sub import {
+        after_runtime { $main::TRIGGERED++ } caller;
+    }
 
-    $INC{ 'Test/A.pm' } = __FILE__;
+    $INC{'Test/A.pm'} = __FILE__;
+
+    1;
 }
 
-{
+BEGIN {
     package Test::B;
     use strict;
     use warnings;
@@ -27,9 +29,13 @@ BEGIN {
 
     ok( !$main::TRIGGERED, "Not triggered yet." );
 
+    $INC{'Test/B.pm'} = __FILE__;
+
     1;
 }
 
-ok( !$main::TRIGGERED, "triggered" );
+use Test::B;
 
-done_testing;
+ok( $main::TRIGGERED, "triggered" );
+
+done_testing();
