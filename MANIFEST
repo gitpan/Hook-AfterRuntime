@@ -5,5 +5,7 @@ META.yml
 README
 t/Acceptance1.t
 t/Acceptance2.t
+t/AutoDone.pm
+t/Synopsys.t
 t/TestA.pm
 t/TestB.pm
