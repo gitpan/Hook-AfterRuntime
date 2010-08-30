@@ -15,7 +15,7 @@ name: Hook-AfterRuntime
 provides:
   Hook::AfterRuntime:
     file: lib/Hook/AfterRuntime.pm
-    version: 0.003
+    version: 0.004
 requires:
   B::Hooks::Parser: 0.09
   Exporter: 5.57
@@ -24,4 +24,4 @@ resources:
   homepage: http://open-exodus.net/projects/Hook-AfterRuntime
   license: http://dev.perl.org/licenses/
   repository: http://github.com/exodist/Hook-AfterRuntime
-version: 0.003
+version: 0.004
